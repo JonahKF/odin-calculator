@@ -295,3 +295,18 @@ btnClear.addEventListener("click", () => {
     operator = "";
     displayVar = "";
 });
+
+const btnDecimal = document.querySelector("#decimal");
+btnDecimal.addEventListener("click", () => {
+    if(!displayVar.includes(".")){
+        if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
+            displayText.textContent = "";
+            displayVar = "";
+            postOperation = false;
+        }
+        let text = displayText.textContent;
+        text = text.concat(".");
+        displayText.textContent = text;
+        displayVar += ".";
+    }
+});
