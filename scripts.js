@@ -164,16 +164,20 @@ btn9.addEventListener("click", () => {
 
 const btn0 = document.querySelector("#zero");
 btn0.addEventListener("click", () => {
-    if(displayVar !== "0"){
+    if(displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
+        displayText.textContent = "";
+        displayVar = "";
+        postOperation = false;
         let text = displayText.textContent;
         text = text.concat(0);
         displayText.textContent = text;
         displayVar += "0";
     }
-    else if(displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
-        displayText.textContent = "";
-        displayVar = "";
-        postOperation = false;
+    else if(displayVar !== "0"){
+        let text = displayText.textContent;
+        text = text.concat(0);
+        displayText.textContent = text;
+        displayVar += "0";
     }
 });
 
@@ -188,7 +192,7 @@ btnPlus.addEventListener("click", () => {
     }
     else if(num1 !== "blank"){
         num2 = Number(displayVar);
-        result = operate(num1, num2, operator);
+        result = Math.round(operate(num1, num2, operator)* 100) / 100;
         displayVar = result;
         num1 = result;
         displayText.textContent = result;
@@ -209,7 +213,7 @@ btnMinus.addEventListener("click", () => {
     }
     else if(num1 !== "blank"){
         num2 = Number(displayVar);
-        result = operate(num1, num2, operator);
+        result = Math.round(operate(num1, num2, operator)* 100) / 100;
         displayVar = result;
         num1 = result;
         displayText.textContent = result;
@@ -230,7 +234,7 @@ btnMultiply.addEventListener("click", () => {
     }
     else if(num1 !== "blank"){
         num2 = Number(displayVar);
-        result = operate(num1, num2, operator);
+        result = Math.round(operate(num1, num2, operator)* 100) / 100;
         displayVar = result;
         num1 = result;
         displayText.textContent = result;
@@ -251,7 +255,7 @@ btnDivide.addEventListener("click", () => {
     }
     else if(num1 !== "blank"){
         num2 = Number(displayVar);
-        result = operate(num1, num2, operator);
+        result = Math.round(operate(num1, num2, operator)* 100) / 100;
         displayVar = result;
         num1 = result;
         displayText.textContent = result;
@@ -266,7 +270,7 @@ const btnEquals = document.querySelector("#equals");
 btnEquals.addEventListener("click", () => {
     if(num1 !== "blank"){
         num2 = Number(displayVar);
-        result = operate(num1, num2, operator);
+        result = Math.round(operate(num1, num2, operator)* 100) / 100;
         displayVar = result;
         // console.log("num1 is " + num1);
         // console.log("num2 is " + num2);
