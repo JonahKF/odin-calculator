@@ -186,8 +186,16 @@ btnPlus.addEventListener("click", () => {
         displayVar = "+";
         operator = "+";
     }
-    else if(num2 === 0){
+    else if(num1 !== "blank"){
+        num2 = Number(displayVar);
+        result = operate(num1, num2, operator);
+        displayVar = result;
+        num1 = result;
+        displayText.textContent = result;
 
+        num2 = "blank";
+        operator = "+";
+        postOperation = true;
     }
 });
 
@@ -199,6 +207,17 @@ btnMinus.addEventListener("click", () => {
         displayVar = "-";
         operator = "-";
     }
+    else if(num1 !== "blank"){
+        num2 = Number(displayVar);
+        result = operate(num1, num2, operator);
+        displayVar = result;
+        num1 = result;
+        displayText.textContent = result;
+
+        num2 = "blank";
+        operator = "-";
+        postOperation = true;
+    }
 });
 
 const btnMultiply = document.querySelector("#multiplication");
@@ -209,6 +228,17 @@ btnMultiply.addEventListener("click", () => {
         displayVar = "x";
         operator = "*";
     }
+    else if(num1 !== "blank"){
+        num2 = Number(displayVar);
+        result = operate(num1, num2, operator);
+        displayVar = result;
+        num1 = result;
+        displayText.textContent = result;
+
+        num2 = "blank";
+        operator = "*";
+        postOperation = true;
+    }
 });
 
 const btnDivide = document.querySelector("#division");
@@ -218,6 +248,17 @@ btnDivide.addEventListener("click", () => {
         num1 = Number(displayVar);
         displayVar = "÷";
         operator = "/";
+    }
+    else if(num1 !== "blank"){
+        num2 = Number(displayVar);
+        result = operate(num1, num2, operator);
+        displayVar = result;
+        num1 = result;
+        displayText.textContent = result;
+
+        num2 = "blank";
+        operator = "/";
+        postOperation = true;
     }
 });
 
