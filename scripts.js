@@ -39,6 +39,7 @@ let displayVar = "";
 let num1 = "blank";
 let num2 = "blank";
 let operator = "";
+let postOperation = false;
 
 const displayText = document.querySelector("#display-text");
 
@@ -46,9 +47,10 @@ const displayText = document.querySelector("#display-text");
 //Button Functionality & Listeners
 const btn1 = document.querySelector("#one");
 btn1.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(1);
@@ -58,9 +60,10 @@ btn1.addEventListener("click", () => {
 
 const btn2 = document.querySelector("#two");
 btn2.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(2);
@@ -70,9 +73,10 @@ btn2.addEventListener("click", () => {
 
 const btn3 = document.querySelector("#three");
 btn3.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(3);
@@ -82,9 +86,10 @@ btn3.addEventListener("click", () => {
 
 const btn4 = document.querySelector("#four");
 btn4.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(4);
@@ -94,9 +99,10 @@ btn4.addEventListener("click", () => {
 
 const btn5 = document.querySelector("#five");
 btn5.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(5);
@@ -106,9 +112,10 @@ btn5.addEventListener("click", () => {
 
 const btn6 = document.querySelector("#six");
 btn6.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(6);
@@ -118,9 +125,10 @@ btn6.addEventListener("click", () => {
 
 const btn7 = document.querySelector("#seven");
 btn7.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(7);
@@ -130,9 +138,10 @@ btn7.addEventListener("click", () => {
 
 const btn8 = document.querySelector("#eight");
 btn8.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(8);
@@ -142,9 +151,10 @@ btn8.addEventListener("click", () => {
 
 const btn9 = document.querySelector("#nine");
 btn9.addEventListener("click", () => {
-    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    if(displayVar === "0" || displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
     let text = displayText.textContent;
     text = text.concat(9);
@@ -160,9 +170,10 @@ btn0.addEventListener("click", () => {
         displayText.textContent = text;
         displayVar += "0";
     }
-    else if(displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷"){
+    else if(displayVar === "+" || displayVar === "-" || displayVar === "x" || displayVar === "÷" || postOperation === true){
         displayText.textContent = "";
         displayVar = "";
+        postOperation = false;
     }
 });
 
@@ -215,15 +226,27 @@ btnEquals.addEventListener("click", () => {
     if(num1 !== "blank"){
         num2 = Number(displayVar);
         result = operate(num1, num2, operator);
-        console.log("num1 is " + num1);
-        console.log("num2 is " + num2);
-        console.log("Result is " + result);
+        displayVar = result;
+        // console.log("num1 is " + num1);
+        // console.log("num2 is " + num2);
+        // console.log("Result is " + result);
         displayText.textContent = result;
+
+        // Resets Parameters
+        num1 = "blank";
+        num2 = "blank";
+        operator = "";
+        postOperation = true;
     }
 });
 
 const btnClear = document.querySelector("#clear");
 btnClear.addEventListener("click", () => {
     displayText.textContent = "";
+
+    // Resets Parameters
+    num1 = "blank";
+    num2 = "blank";
+    operator = "";
     displayVar = "";
 });
